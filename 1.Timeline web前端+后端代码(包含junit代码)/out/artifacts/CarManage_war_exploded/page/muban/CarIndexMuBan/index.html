@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <script type="text/javascript" src="/js/getRootPath.js"></script>
+    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+    <!--jquery.cookie.js 必须在jquery-x.x.x.js后面引入-->
+    <script type="text/javascript" src="/js/jquery.cookie.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('siteCtrl', function($scope, $http) {
+            alert("aaa");
+            alert($.cookie("userid"));
+//            $http.get("http://www.runoob.com/try/angularjs/data/sites.php")
+//                .then(function (response) {$scope.names = response.data.sites;});
+        });
+    </script>
+</head>
+<body >
+
+
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Timeline</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> 更新</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<div ng-app="myApp" ng-controller="siteCtrl">
+
+    <ul>
+        <li ng-repeat="x in names">
+            {{ x.Name + ', ' + x.Country }}
+        </li>
+    </ul>
+
+</div>
+
+<div class="list-group" ng-app="myApp" ng-controller="formCtrl">
+    <ul>
+        <li ng-repeat="x in names">
+            {{ x.Name + ', ' + x.Country }}
+        </li>
+    </ul>
+    <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">
+            列表
+        </h4>
+
+
+        <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">
+                孙海英
+                <span>五分钟前</span>
+            </h4>
+            <p class="list-group-item-text">
+                XXXXXXXXXXXXX
+            </p>
+        </a>
+        <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading" ng-model="firstname">{{firstname}}</h4>
+            <p class="list-group-item-text" ng-model="firstname">XXXXXXXXXXXXXXXXXXX</p>
+        </a>
+        <form>
+            First Name: <input type="text" ng-model="firstname">
+        </form>
+</div>
+
+<button type="button" class="btn btn-primary btn-lg btn-block">更多</button>
+
+
+
+<div ng-app="myApp" ng-controller="siteCtrl">
+
+    <ul>
+        <li ng-repeat="x in names">
+            {{ x.Name + ', ' + x.Country }}
+        </li>
+    </ul>
+
+</div>
+
+
+
+
+</body>
+</html>

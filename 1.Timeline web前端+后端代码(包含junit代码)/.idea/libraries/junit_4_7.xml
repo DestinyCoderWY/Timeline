@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="junit-4.7">
+    <CLASSES>
+      <root url="jar://G:/谷歌下载/junit/junit/junit-4.7.jar!/" />
+      <root url="jar://G:/谷歌下载/junit/junit/JUnitGenerator.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

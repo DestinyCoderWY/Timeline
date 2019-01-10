@@ -1,0 +1,117 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DBUtil</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.cwj.taiqiangle.util</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DBUtil (com.cwj.taiqiangle.util)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DBUtil</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (2/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    44.4%
+  </span>
+  <span class="absValue">
+    (4/ 9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.cwj.taiqiangle.util;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.sql.Connection;
+<i>4</i>&nbsp;import java.sql.DriverManager;
+<i>5</i>&nbsp;import java.sql.SQLException;
+<i>6</i>&nbsp;
+<b class="nc"><i>7</i>&nbsp;public class DBUtil {</b>
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;	/*
+<i>10</i>&nbsp;		静态块，检查一下有没有驱动
+<i>11</i>&nbsp;	 */
+<i>12</i>&nbsp;	static {
+<i>13</i>&nbsp;		try {
+<b class="fc"><i>14</i>&nbsp;			Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</b>
+<b class="nc"><i>15</i>&nbsp;		} catch (ClassNotFoundException e) {</b>
+<b class="nc"><i>16</i>&nbsp;			e.printStackTrace();</b>
+<b class="fc"><i>17</i>&nbsp;		}</b>
+<b class="fc"><i>18</i>&nbsp;	}</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;	public static Connection getConnection() throws SQLException {
+<b class="fc"><i>21</i>&nbsp;		return DriverManager.getConnection(&quot;jdbc:mysql://111.230.53.39:3306/test1217?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=true&quot;,&quot;test1217&quot;,&quot;zhaoyiwei&quot;);</b>
+<i>22</i>&nbsp;	}
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;	/*
+<i>25</i>&nbsp;	 	用来测试的main
+<i>26</i>&nbsp;	 */
+<i>27</i>&nbsp;	public static void main(String[] args) throws SQLException {
+<b class="nc"><i>28</i>&nbsp;		System.out.println(getConnection());</b>
+<i>29</i>&nbsp;		
+<b class="nc"><i>30</i>&nbsp;	}</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;	
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-01-09 14:27</div>
+</div>
+</body>
+</html>

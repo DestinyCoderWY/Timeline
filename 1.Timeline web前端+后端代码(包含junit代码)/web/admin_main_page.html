@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.staticfile.org/angular.js/1.6.3/angular.min.js"></script>
+    <script type="text/javascript" src="/CarManage_war/js/jquery-2.1.4.min.js"></script>
+    <!--jquery.cookie.js 必须在jquery-x.x.x.js后面引入-->
+    <script type="text/javascript" src="/CarManage_war/js/jquery.cookie.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Timeline</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id="update"><span class="glyphicon glyphicon-user"></span> 更新</a></li>
+
+        </ul>
+    </div>
+</nav>
+<div ng-app="myApp" ng-controller="siteCtrl">
+
+    <ul>
+        <li ng-repeat="x in names">
+            {{ x.id + ', ' + x.msg }}
+        </li>
+    </ul>
+    <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">
+            列表
+        </h4>
+
+
+        <a href="#" class="list-group-item" ng-repeat="x in comments">
+            <h4 class="list-group-item-heading">
+                {{x.username}}
+                <span>{{x.time}}</span>
+            </h4>
+            <p class="list-group-item-text">
+                {{x.commment}}
+            </p>
+        </a>
+
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="getmore">更多</button>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">添加</button>
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">添加文本</h4>
+                    </div>
+                    <div class="modal-body">请输入文本</div>
+                    <input id="content" type="text">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">提交</button>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+    </a>
+</div>
+<script type="text/javascript" src="/CarManage_war/js/getRootPath.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    //var baseUrl =getRootPath_web();
+    var baseUrl ="http://111.230.53.39:8080/CarManage_war/";
+    var username=$.cookie("username");
+    app.controller('siteCtrl', function($scope, $http) {
+
+        alert("欢迎您"+username);
+
+        $http.get(baseUrl + "comment/getall")
+            .then(function (response) {
+                $scope.comments = response.data.data;
+                var aa = eval(response.data.data);
+                // for(var i=0;i<aa.length;i++)
+                //{
+                //    alert(aa[i].id);
+                // }
+                $scope.lastid = aa[aa.length-1].id;
+                //alert(aa[aa.length-1].id);
+            });
+
+        $("#getmore").click(function(){
+            $.ajax({
+                url : baseUrl+"comment/getmore",
+                type : "get",
+                data:{nowPos:$scope.lastid},
+                dataType : "json",
+                success : function(data){
+                    linksData = data.data;
+                    //alert(data);
+                    if(data.code=="200"){
+                        alert("成功");
+                        $scope.comments=linksData;
+                        //  $scope.comments = response.data.data;
+                        var aa = eval(data.data);
+                        $scope.lastid = aa[aa.length-1].id;
+                        //alert(aa[aa.length-1].id);
+                        $scope.$apply();
+                        //  window.location.reload();
+                    }else{
+                        alert("失败");
+                    }
+                },
+                error:function () {
+                    alert("添加失败>_<检查一下网络吧");
+                }
+            });
+        });
+
+        $("#update").click(function(){
+            $http.get(baseUrl + "comment/getall")
+                .then(function (response) {
+                    $scope.comments = response.data.data;
+                    var aa = eval(response.data.data);
+                    // for(var i=0;i<aa.length;i++)
+                    //{
+                    //    alert(aa[i].id);
+                    // }
+                    $scope.lastid = aa[aa.length-1].id;
+                    $scope.$apply();
+                    //alert(aa[aa.length-1].id);
+                });
+        });
+    });
+</script>
+<script>
+    $(function() {
+        $('#myModal').modal('hide')
+    });
+</script>
+<script>
+    $(function() {
+        var userid=$.cookie("userid");
+        $('#myModal').on('hide.bs.modal',
+            function() {
+
+                // alert($('#content').val());
+                $.ajax({
+                    url : baseUrl+"comment/addcomment",
+                    type : "get",
+                    data:{id:userid,content:$('#content').val(),pic:"null" },
+                    dataType : "json",
+                    success : function(data){
+                        linksData = data.data;
+                        //alert(data);
+                        if(data.code=="200"){
+                            alert("添加成功");
+                            window.location.reload();
+                        }else{
+                            alert("添加失败");
+                        }
+                    },
+                    error:function () {
+                        alert("添加失败>_<检查一下网络吧");
+                    }
+                });
+            })
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UsersService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.cwj.taiqiangle.service</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UsersService (com.cwj.taiqiangle.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UsersService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (28/ 28)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.cwj.taiqiangle.service;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.cwj.taiqiangle.model.user;
+<i>4</i>&nbsp;import com.cwj.taiqiangle.util.DBUtil;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.sql.Connection;
+<i>7</i>&nbsp;import java.sql.PreparedStatement;
+<i>8</i>&nbsp;import java.sql.ResultSet;
+<i>9</i>&nbsp;import java.sql.SQLException;
+<i>10</i>&nbsp;import java.util.ArrayList;
+<i>11</i>&nbsp;import java.util.List;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;/**
+<i>14</i>&nbsp; * Created by 蛟川小盆友 on 2018/12/18.
+<i>15</i>&nbsp; */
+<b class="fc"><i>16</i>&nbsp;public class UsersService {</b>
+<i>17</i>&nbsp;    private Connection conn;
+<b class="fc"><i>18</i>&nbsp;    private PreparedStatement ps = null;</b>
+<b class="fc"><i>19</i>&nbsp;    private ResultSet rs = null;</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public List&lt;user&gt; getUserByName(String name) throws SQLException {
+<b class="fc"><i>22</i>&nbsp;        conn = DBUtil.getConnection();</b>
+<b class="fc"><i>23</i>&nbsp;        List&lt;user&gt; userBeans = new ArrayList&lt;user&gt;();</b>
+<b class="fc"><i>24</i>&nbsp;        String sql = &quot;select * from user where user_name= ?&quot;;</b>
+<b class="fc"><i>25</i>&nbsp;        ps = conn.prepareStatement(sql);</b>
+<b class="fc"><i>26</i>&nbsp;        ps.setObject(1, name);</b>
+<b class="fc"><i>27</i>&nbsp;        rs = ps.executeQuery();</b>
+<b class="fc"><i>28</i>&nbsp;        while(rs.next()){</b>
+<b class="fc"><i>29</i>&nbsp;            user userBean=new user();</b>
+<b class="fc"><i>30</i>&nbsp;            userBean.setUser_id(rs.getInt(&quot;user_id&quot;));</b>
+<b class="fc"><i>31</i>&nbsp;            userBean.setPassword(rs.getString(&quot;password&quot;));</b>
+<b class="fc"><i>32</i>&nbsp;            userBean.setUser_name(rs.getString(&quot;user_name&quot;));</b>
+<i>33</i>&nbsp;
+<b class="fc"><i>34</i>&nbsp;            userBeans.add(userBean);</b>
+<b class="fc"><i>35</i>&nbsp;        }</b>
+<b class="fc"><i>36</i>&nbsp;        conn.close();</b>
+<b class="fc"><i>37</i>&nbsp;        if(userBeans.size()&gt;0){</b>
+<b class="fc"><i>38</i>&nbsp;            System.out.println(&quot;GetUserByName中看看个人描述&quot;+userBeans.get(0).getUser_name());</b>
+<i>39</i>&nbsp;        }
+<b class="fc"><i>40</i>&nbsp;        return userBeans;</b>
+<i>41</i>&nbsp;    }
+<i>42</i>&nbsp;    public int userReg(String name, String pass) throws SQLException {
+<b class="fc"><i>43</i>&nbsp;        conn = DBUtil.getConnection();</b>
+<i>44</i>&nbsp;        //List&lt;user&gt; userBeans = new ArrayList&lt;user&gt;();
+<b class="fc"><i>45</i>&nbsp;        String sql = &quot;INSERT INTO user (user_name, password) VALUES (?, ?)&quot;;</b>
+<b class="fc"><i>46</i>&nbsp;        ps = conn.prepareStatement(sql);</b>
+<b class="fc"><i>47</i>&nbsp;        ps.setObject(1, name);</b>
+<b class="fc"><i>48</i>&nbsp;        ps.setObject(2, pass);</b>
+<b class="fc"><i>49</i>&nbsp;        int t = ps.executeUpdate();</b>
+<b class="fc"><i>50</i>&nbsp;        conn.close();</b>
+<i>51</i>&nbsp;
+<b class="fc"><i>52</i>&nbsp;        return t;</b>
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-01-09 14:27</div>
+</div>
+</body>
+</html>
