@@ -15,3 +15,6 @@ http://111.230.53.39:8080/CarManage_war/
 即可进入网站
 
 Pc端使用指南：
+打开系统Demo文件夹
+运行TimeLine.exe即可
+（前提为机器内已安装Java）
