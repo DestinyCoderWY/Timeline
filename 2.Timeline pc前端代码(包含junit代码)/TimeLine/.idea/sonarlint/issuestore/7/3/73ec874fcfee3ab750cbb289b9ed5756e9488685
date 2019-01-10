@@ -1,0 +1,19 @@
+
+dsquid:S2147¸"ECombine this catch with the one at line 182, which has the same body.(ï­£Ä8ª–ñÇ‚-
+Vsquid:UselessImportCheck"+Remove this unused import 'java.util.Date'.(¸…¼ü8×¡îÆ‚-
+[squid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8×¡îÆ‚-
+Gsquid:S1148·"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ª–ñÇ‚-
+‚squid:S1149n"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(Æ—ó–ıÿÿÿÿ8×¡îÆ‚-
+Msquid:S2093o"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8×¡îÆ‚-
+Nsquid:S2093œ"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8ª–ñÇ‚-
+Gsquid:S1148¹"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ª–ñÇ‚-
+Gsquid:S1148À"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ª–ñÇ‚-
+Gsquid:S1148Î"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ª–ñÇ‚-
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íôÜä
+Gsquid:S1148"#Use a logger to log this exception.(‰œ‰Õúÿÿÿÿ8×¡îÆ‚-
+lsquid:S2259Ñ"HA "NullPointerException" could be thrown; "connection" is nullable here.(•™ğåıÿÿÿÿ8ª–ñÇ‚-
+ƒsquid:S1149®"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(«Äâüÿÿÿÿ8ª–ñÇ‚-
+Gsquid:S1148Ç"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ª–ñÇ‚-
+Isquid:S1168,"+Return an empty collection instead of null.(¥¹ï8ÃûÚÉ‚-
+Isquid:S1168;"+Return an empty collection instead of null.(¥¹ï8×¡îÆ‚-
+Gsquid:S1148†"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8×¡îÆ‚-

@@ -1,0 +1,5 @@
+
+lsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(÷¶³…8Ù€êÆ‚-
+Hsquid:S1948"*Make "httpUtil" transient or serializable.(Íçî¿8Ù€êÆ‚-
+\squid:UselessImportCheck"1Remove this unused import 'com.google.gson.Gson'.(–§8ä“õÉ‚-
+Psquid:S1948"-Make "commentList" transient or serializable.(Ùåøÿÿÿÿ8Ù€êÆ‚-

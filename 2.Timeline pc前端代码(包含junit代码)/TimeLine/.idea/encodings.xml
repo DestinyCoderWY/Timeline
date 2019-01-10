@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/com/ecnu/timeline/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ecnu/timeline/model/Comment.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ecnu/timeline/ui/ContentBox.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ecnu/timeline/ui/LoginFrame.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ecnu/timeline/ui/TimeLineFrame.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ecnu/timeline/webUtil/HttpUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/com/ecnu/timeline/MainTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/com/ecnu/timeline/model/CommentTest.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

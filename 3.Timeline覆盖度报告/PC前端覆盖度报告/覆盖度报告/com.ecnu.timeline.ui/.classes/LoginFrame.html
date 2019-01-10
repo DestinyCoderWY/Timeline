@@ -1,0 +1,262 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LoginFrame</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.ecnu.timeline.ui</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LoginFrame (com.ecnu.timeline.ui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoginFrame</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (3/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83%
+  </span>
+  <span class="absValue">
+    (73/ 88)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LoginFrame$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/ 3)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (4/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.3%
+  </span>
+  <span class="absValue">
+    (74/ 91)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.ecnu.timeline.ui;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.ecnu.timeline.webUtil.HttpUtil;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import javax.swing.*;
+<i>6</i>&nbsp;import java.awt.*;
+<i>7</i>&nbsp;import java.awt.event.ActionEvent;
+<i>8</i>&nbsp;import java.awt.event.WindowAdapter;
+<i>9</i>&nbsp;import java.awt.event.WindowEvent;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public class LoginFrame extends JFrame {
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    private static final int DEFAULT_WIDTH = 700;
+<i>14</i>&nbsp;    private static final int DEFAULT_HEIGHT = 800;
+<i>15</i>&nbsp;    private static final int FONT_SIZE = 36;
+<i>16</i>&nbsp;    private static final int TEXT_WIDTH = 150;
+<i>17</i>&nbsp;    private static final int TEXT_HEIGHT = 50;
+<i>18</i>&nbsp;
+<b class="fc"><i>19</i>&nbsp;    private HttpUtil httpUtil = HttpUtil.getHttpUtil();</b>
+<b class="fc"><i>20</i>&nbsp;    private int userId = 0;</b>
+<b class="fc"><i>21</i>&nbsp;    private String userName = &quot;&quot;;</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    private boolean login(String userName, String password){
+<b class="fc"><i>24</i>&nbsp;        userId = httpUtil.login(userName,password);</b>
+<b class="fc"><i>25</i>&nbsp;        if(userId != 0){</b>
+<b class="fc"><i>26</i>&nbsp;            this.userName = userName;</b>
+<b class="fc"><i>27</i>&nbsp;            return true;</b>
+<i>28</i>&nbsp;        }
+<b class="fc"><i>29</i>&nbsp;        return false;</b>
+<i>30</i>&nbsp;    }
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    private boolean register(String userName, String password){
+<b class="fc"><i>33</i>&nbsp;        boolean result = !(&quot;&quot;.equals(userName));</b>
+<b class="fc"><i>34</i>&nbsp;        if(result){</b>
+<b class="fc"><i>35</i>&nbsp;            userId = httpUtil.register(userName,password);</b>
+<b class="fc"><i>36</i>&nbsp;            if(userId != 0){</b>
+<b class="fc"><i>37</i>&nbsp;                this.userName = userName;</b>
+<b class="fc"><i>38</i>&nbsp;                result = true;</b>
+<i>39</i>&nbsp;            }
+<i>40</i>&nbsp;        }
+<b class="fc"><i>41</i>&nbsp;        return result;</b>
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;    public LoginFrame(){</b>
+<i>45</i>&nbsp;
+<b class="fc"><i>46</i>&nbsp;        setTitle(&quot;登录&quot;);</b>
+<b class="fc"><i>47</i>&nbsp;        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);</b>
+<b class="fc"><i>48</i>&nbsp;        setLocationRelativeTo(null);</b>
+<b class="fc"><i>49</i>&nbsp;        /*addWindowListener(new WindowAdapter() {</b>
+<i>50</i>&nbsp;            @Override
+<i>51</i>&nbsp;            public void windowClosing(WindowEvent e)
+<b class="nc"><i>52</i>&nbsp;            {  LoginFrame.super.dispose();</b>
+<b class="nc"><i>53</i>&nbsp;            }</b>
+<i>54</i>&nbsp;        } );*/
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;        // construct the top horizontal box
+<i>57</i>&nbsp;
+<b class="fc"><i>58</i>&nbsp;        JLabel userNameLabel = new JLabel(&quot;用户名:&quot;);</b>
+<b class="fc"><i>59</i>&nbsp;        userNameLabel.setFont(new Font(&quot;宋体&quot;, Font.PLAIN, FONT_SIZE));</b>
+<b class="fc"><i>60</i>&nbsp;        JTextField userNameText = new JTextField(20);</b>
+<b class="fc"><i>61</i>&nbsp;        userNameText.setPreferredSize(new Dimension(TEXT_WIDTH,TEXT_HEIGHT));</b>
+<b class="fc"><i>62</i>&nbsp;        userNameText.setMaximumSize(userNameText.getPreferredSize());</b>
+<b class="fc"><i>63</i>&nbsp;        userNameText.setFont(new Font(&quot;宋体&quot;, Font.PLAIN, FONT_SIZE));</b>
+<i>64</i>&nbsp;
+<b class="fc"><i>65</i>&nbsp;        Box userNameHBox = Box.createHorizontalBox();</b>
+<b class="fc"><i>66</i>&nbsp;        userNameHBox.add(Box.createGlue());</b>
+<b class="fc"><i>67</i>&nbsp;        userNameHBox.add(userNameLabel);</b>
+<i>68</i>&nbsp;        // separate with a 10-pixel strut
+<b class="fc"><i>69</i>&nbsp;        userNameHBox.add(Box.createHorizontalStrut(50));</b>
+<b class="fc"><i>70</i>&nbsp;        userNameHBox.add(userNameText);</b>
+<b class="fc"><i>71</i>&nbsp;        userNameHBox.add(Box.createGlue());</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;        // construct the middle horizontal box
+<i>74</i>&nbsp;
+<b class="fc"><i>75</i>&nbsp;        JLabel passwordLabel = new JLabel(&quot;密码:&quot;);</b>
+<b class="fc"><i>76</i>&nbsp;        passwordLabel.setFont(new Font(&quot;宋体&quot;, Font.PLAIN, FONT_SIZE));</b>
+<b class="fc"><i>77</i>&nbsp;        JPasswordField  passwordText = new JPasswordField (20);</b>
+<b class="fc"><i>78</i>&nbsp;        passwordText.setPreferredSize(new Dimension(TEXT_WIDTH,TEXT_HEIGHT));</b>
+<b class="fc"><i>79</i>&nbsp;        passwordText.setMaximumSize(userNameText.getPreferredSize());</b>
+<b class="fc"><i>80</i>&nbsp;        passwordText.setFont(new Font(&quot;宋体&quot;, Font.PLAIN, FONT_SIZE));</b>
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;
+<b class="fc"><i>83</i>&nbsp;        Box passwordHBox = Box.createHorizontalBox();</b>
+<b class="fc"><i>84</i>&nbsp;        passwordHBox.add(Box.createGlue());</b>
+<b class="fc"><i>85</i>&nbsp;        passwordHBox.add(passwordLabel);</b>
+<i>86</i>&nbsp;        // separate with a 10-pixel strut
+<b class="fc"><i>87</i>&nbsp;        passwordHBox.add(Box.createHorizontalStrut(50));</b>
+<b class="fc"><i>88</i>&nbsp;        passwordHBox.add(passwordText);</b>
+<b class="fc"><i>89</i>&nbsp;        passwordHBox.add(Box.createGlue());</b>
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;        // construct the bottom horizontal box
+<i>92</i>&nbsp;
+<b class="fc"><i>93</i>&nbsp;        JButton loginButton = new JButton(&quot;登录&quot;);</b>
+<b class="fc"><i>94</i>&nbsp;        loginButton.setFont(new Font(&quot;宋体&quot;, Font.PLAIN, FONT_SIZE));</b>
+<b class="fc"><i>95</i>&nbsp;        loginButton.setContentAreaFilled(false);</b>
+<b class="fc"><i>96</i>&nbsp;        loginButton.addActionListener((ActionEvent e) -&gt; {</b>
+<i>97</i>&nbsp;
+<b class="nc"><i>98</i>&nbsp;            if(login(userNameText.getText(),new String(passwordText.getPassword()))){</b>
+<b class="nc"><i>99</i>&nbsp;                this.setVisible(false);</b>
+<b class="nc"><i>100</i>&nbsp;                TimeLineFrame f = new TimeLineFrame(userName,userId);</b>
+<b class="nc"><i>101</i>&nbsp;                f.initData();</b>
+<b class="nc"><i>102</i>&nbsp;                f.setVisible(true);</b>
+<b class="nc"><i>103</i>&nbsp;            }</b>
+<i>104</i>&nbsp;            else{
+<b class="nc"><i>105</i>&nbsp;                JOptionPane.showMessageDialog(null, &quot;登录失败！！！&quot;, &quot;提示&quot;, JOptionPane.ERROR_MESSAGE);</b>
+<i>106</i>&nbsp;            }
+<i>107</i>&nbsp;
+<b class="nc"><i>108</i>&nbsp;        });</b>
+<b class="fc"><i>109</i>&nbsp;        JButton clearButton = new JButton(&quot;清空&quot;);</b>
+<b class="fc"><i>110</i>&nbsp;        clearButton.setFont(new Font(&quot;宋体&quot;, Font.PLAIN, FONT_SIZE));</b>
+<b class="fc"><i>111</i>&nbsp;        clearButton.setContentAreaFilled(false);</b>
+<b class="fc"><i>112</i>&nbsp;        clearButton.addActionListener((ActionEvent e) -&gt; {</b>
+<b class="nc"><i>113</i>&nbsp;            userNameText.setText(&quot;&quot;);</b>
+<b class="nc"><i>114</i>&nbsp;            passwordText.setText(&quot;&quot;);</b>
+<b class="nc"><i>115</i>&nbsp;        });</b>
+<b class="fc"><i>116</i>&nbsp;        JButton registerButton = new JButton(&quot;注册新用户&quot;);</b>
+<b class="fc"><i>117</i>&nbsp;        registerButton.setFont(new Font(&quot;宋体&quot;, Font.PLAIN, FONT_SIZE));</b>
+<b class="fc"><i>118</i>&nbsp;        registerButton.setContentAreaFilled(false);</b>
+<b class="fc"><i>119</i>&nbsp;        registerButton.addActionListener((ActionEvent e) -&gt; {</b>
+<i>120</i>&nbsp;
+<b class="nc"><i>121</i>&nbsp;            if(register(userNameText.getText(),new String(passwordText.getPassword()))){</b>
+<b class="nc"><i>122</i>&nbsp;                JOptionPane.showMessageDialog(null, &quot;注册成功！！！&quot;, &quot;提示&quot;, JOptionPane.INFORMATION_MESSAGE);</b>
+<i>123</i>&nbsp;            }
+<i>124</i>&nbsp;            else{
+<b class="nc"><i>125</i>&nbsp;                JOptionPane.showMessageDialog(null, &quot;注册失败！！！&quot;, &quot;提示&quot;, JOptionPane.ERROR_MESSAGE);</b>
+<i>126</i>&nbsp;            }
+<i>127</i>&nbsp;
+<b class="nc"><i>128</i>&nbsp;        });</b>
+<i>129</i>&nbsp;
+<b class="fc"><i>130</i>&nbsp;        Box buttonsHBox = Box.createHorizontalBox();</b>
+<b class="fc"><i>131</i>&nbsp;        buttonsHBox.add(Box.createGlue());</b>
+<b class="fc"><i>132</i>&nbsp;        buttonsHBox.add(loginButton);</b>
+<i>133</i>&nbsp;        // use &quot;glue&quot; to push the two buttons apart
+<b class="fc"><i>134</i>&nbsp;        buttonsHBox.add(Box.createGlue());</b>
+<b class="fc"><i>135</i>&nbsp;        buttonsHBox.add(clearButton);</b>
+<b class="fc"><i>136</i>&nbsp;        buttonsHBox.add(Box.createGlue());</b>
+<b class="fc"><i>137</i>&nbsp;        buttonsHBox.add(registerButton);</b>
+<b class="fc"><i>138</i>&nbsp;        buttonsHBox.add(Box.createGlue());</b>
+<i>139</i>&nbsp;
+<i>140</i>&nbsp;        // add the three horizontal boxes inside a vertical box
+<i>141</i>&nbsp;
+<b class="fc"><i>142</i>&nbsp;        Box mainVBox = Box.createVerticalBox();</b>
+<b class="fc"><i>143</i>&nbsp;        mainVBox.add(Box.createGlue());</b>
+<b class="fc"><i>144</i>&nbsp;        mainVBox.add(userNameHBox);</b>
+<b class="fc"><i>145</i>&nbsp;        mainVBox.add(passwordHBox);</b>
+<b class="fc"><i>146</i>&nbsp;        mainVBox.add(Box.createGlue());</b>
+<b class="fc"><i>147</i>&nbsp;        mainVBox.add(buttonsHBox);</b>
+<b class="fc"><i>148</i>&nbsp;        mainVBox.add(Box.createGlue());</b>
+<i>149</i>&nbsp;
+<b class="fc"><i>150</i>&nbsp;        add(mainVBox, BorderLayout.CENTER);</b>
+<b class="fc"><i>151</i>&nbsp;    }</b>
+<i>152</i>&nbsp;
+<i>153</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-01-10 18:02</div>
+</div>
+</body>
+</html>
